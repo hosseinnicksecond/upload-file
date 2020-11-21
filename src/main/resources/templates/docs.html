@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyemleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Saved File</title>
+</head>
+<body>
+ <div>
+     <form method="post" action="#" th:action="@{/doForm}"  enctype="multipart/form-data">
+         <input type="file" name="files" multiple required>
+         <button type="submit">Submit</button>
+     </form>
+
+     <br>
+     <br>
+     <br>
+
+     <table>
+         <thead>
+           <tr>
+               <td>Name</td>
+               <td>Type</td>
+               <td>Link</td>
+           </tr>
+         </thead>
+
+         <tbody>
+            <tr th:each="file :${docs}">
+                <td th:test="${file.getFileName()}" >name</td>
+                <td th:test="${file.getFileType()}">type</td>
+                <td><a href="#" th:href="@{'/downloadFiles/'+ ${file.id}}">link</a></td>
+            </tr>
+         </tbody>
+     </table>
+ </div>
+</body>
+</html>
